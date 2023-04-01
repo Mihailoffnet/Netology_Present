@@ -123,7 +123,7 @@ print('Студенты с баллом выше среднего:')
 get_best_students(students_list)
 print()
 
-# найдем средний балл по всей группе и по полу
+# найдем средний балл по всей группе по полу
 def get_avg_hw_grade(students, gender=None):
     sum_hw = 0
     counter = 0
