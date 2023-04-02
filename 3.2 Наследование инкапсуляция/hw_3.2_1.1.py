@@ -16,6 +16,10 @@ class Student:
         else:
             return 'Ошибка'    
         
+    def __str__(self):
+        res = f'Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за лекции: {self.grades}\nКурсы в процессе изучения: {", ".join(self.courses_in_progress)}\nЗавершенные курсы: {", ".join(self.finished_courses)}'
+        return res
+        
 class Mentor:
     def __init__(self, name, surname):
         self.name = name
@@ -28,6 +32,10 @@ class Lecturer(Mentor):
 
     lecturer_grades = {}
 
+    def __str__(self):
+        res = f'Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за лекции: {self.lecturer_grades}'
+        return res
+
 class Reviewer(Mentor):
 
     def rate_hw(self, student, course, grade): # по правильному этому методу лучше дать другое название, не как у оценки студентов лекторам? Хотя по приоритету сработает и так правильно.
@@ -38,6 +46,10 @@ class Reviewer(Mentor):
                 student.grades[course] = [grade]
         else:
             return 'Ошибка'
+        
+    def __str__(self):
+        res = f'Имя: {self.name}\nФамилия: {self.surname}'
+        return res
 
 # Создаем объект класса "Лучший студент" и назначаем курсы, которые он изучает
 best_student = Student('Mikhaylov', 'Viktor', 'M')
@@ -45,26 +57,61 @@ best_student.courses_in_progress += ['Python from zero'] # или лучше с�
 best_student.courses_in_progress += ['OOP']
 best_student.finished_courses += ['GIT']
 
+# Создаем объект класса "Другой студент" и назначаем курсы, которые он изучает
+another_student = Student('Another', 'Student', 'M')
+another_student.courses_in_progress += ['GIT'] # или лучше сразу указать все курсы? ['Python from zero', 'GIT', 'OOP'] 
+another_student.courses_in_progress += ['OOP']
+another_student.finished_courses += ['Python from zero']
+
 print()
-print(f' Словарь лучший студент, пока без оценок: {best_student.__dict__}')
-print(f' Изучаемые курсы лучшим студентом: {best_student.courses_in_progress}')
-print(f' Оконченные курсы лучшим студентом: {best_student.finished_courses}')
-print(f' ФИО лучшего студента: {best_student.name} {best_student.surname}')
+print('Лучший студент')
+print(best_student)
+#  print(f' Словарь лучший студент, пока без оценок: {best_student.__dict__}')
+
+# Создаем объект класса "Другой студент" и назначаем курсы, которые он изучает
+another_student = Student('Another', 'Student', 'M')
+another_student.courses_in_progress += ['GIT'] # или лучше сразу указать все курсы? ['Python from zero', 'GIT', 'OOP'] 
+another_student.courses_in_progress += ['OOP']
+another_student.finished_courses += ['Python from zero']
+
 print()
+print('Другой студент')
+print(another_student)
  
 # Создаем объект "Крутой проверяющий" и назначаем курсы, которые он проверяет
 cool_reviewer = Reviewer('Dmitry', 'Kachalov')
 cool_reviewer.courses_attached += ['GIT']
 cool_reviewer.courses_attached += ['Python from zero']
 cool_reviewer.rate_hw(best_student, 'GIT', 7) 
-# оценка не добавится, так как курс студентом уже закончен, сработает проверка условия в методе rate_hw
 cool_reviewer.rate_hw(best_student, 'Python from zero', 9)
 cool_reviewer.rate_hw(best_student, 'Python from zero', 8)
- 
-print(f' Словарь крутой проверяющий: {cool_reviewer.__dict__}')
-print(f' Крутой проверяющий: {cool_reviewer.name} {cool_reviewer.surname}')
-print(f' Оценки от проверяющего лучшему студенту: {best_student.grades}')
+cool_reviewer.rate_hw(another_student, 'GIT', 6) 
+cool_reviewer.rate_hw(another_student, 'Python from zero', 8)
+cool_reviewer.rate_hw(another_student, 'Python from zero', 8)
+
 print()
+print('Крутой проверяющий')
+print(cool_reviewer)
+# print(f' Словарь крутой проверяющий: {cool_reviewer.__dict__}')
+print(f'Оценки лучшему студенту: {best_student.grades}')
+print(f'Оценки другому студенту: {another_student.grades}')
+
+# Создаем объект "другой проверяющий" и назначаем курсы, которые он проверяет
+another_reviewer = Reviewer('Another', 'Reviewer')
+another_reviewer.courses_attached += ['GIT']
+another_reviewer.courses_attached += ['OOP']
+another_reviewer.rate_hw(another_student, 'GIT', 6) 
+another_reviewer.rate_hw(another_student, 'GIT', 8)
+another_reviewer.rate_hw(another_student, 'OOP', 7)
+another_reviewer.rate_hw(best_student, 'GIT', 10) 
+another_reviewer.rate_hw(best_student, 'GIT', 8)
+another_reviewer.rate_hw(best_student, 'OOP', 9)
+
+print()
+print('Другой проверяющий')
+print(another_reviewer)
+print(f'Оценки лучшему студенту: {best_student.grades}')
+print(f'Оценки другому студенту: {another_student.grades}')
 
 # Создаем объект "Крутой лектор" и назначаем курсы, которые он преподает, выставляем ему оценки
 cool_lecturer = Lecturer('Oleg', 'bulygin')
@@ -74,10 +121,35 @@ best_student.rate_hw(cool_lecturer, 'GIT', 10)
 # оценка не добавится, так как курс студентом уже закончен, и лектор его не преподает, сработает проверка первого из этих двух условий
 best_student.rate_hw(cool_lecturer, 'Python from zero', 9)
 best_student.rate_hw(cool_lecturer, 'Python from zero', 10)
+another_student.rate_hw(cool_lecturer, 'OOP', 8)
+another_student.rate_hw(cool_lecturer, 'GIT', 8) 
+another_student.rate_hw(cool_lecturer, 'Python from zero', 8)
 
-print(f' Словарь крутой лектор: {cool_lecturer.__dict__}')
-print(f' Оценки крутому лектору от лучшего студента: {cool_lecturer.lecturer_grades}')
+print()
+print('Крутой Лектор')
+print(cool_lecturer)
+print(f'Лектор ведет курсы: {cool_lecturer.courses_attached}')
+print(f'Оценки крутому лектору от лучшего студента: {cool_lecturer.lecturer_grades}')
 print()
 
-print(f' Словарь лучшего студента с оценками: {best_student.__dict__}')
+# Создаем объект "Другой лектор" и назначаем курсы, которые он преподает, выставляем ему оценки
+another_lecturer = Lecturer('Another', 'Lecturer')
+another_lecturer.courses_attached += ['GIT','Python from zero']
+best_student.rate_hw(another_lecturer, 'Python from zero', 10)
+best_student.rate_hw(another_lecturer, 'GIT', 10) 
+another_student.rate_hw(another_lecturer, 'GIT', 8)
+another_student.rate_hw(another_lecturer, 'Python from zero', 8)
+
 print()
+print('Другой лектор')
+print(another_lecturer)
+print(f'Лектор ведет курсы: {another_lecturer.courses_attached}')
+print(f'Оценки крутому лектору от лучшего студента: {cool_lecturer.lecturer_grades}')
+print()
+
+# print(f'Словарь лучшего студента с оценками: {best_student.__dict__}')
+print('Лучший студент')
+print(best_student)
+print()
+print('Другой студент')
+print(another_student)
