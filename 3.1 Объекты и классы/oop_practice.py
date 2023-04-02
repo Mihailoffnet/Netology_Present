@@ -135,7 +135,7 @@ class Character:
 # что все действия будут происходить именно с тем объектом, к которому мы применяем метод    
     def eat(self, food):
         if self.energy < 100:
-            energy += food
+            self.energy += food
         else:
             print('Not hungry')
     
@@ -147,7 +147,7 @@ class Character:
             print('Too tired')
     
     def change_alias(self, new_alias):
-        print(self) # просто посмотрим, для чего тут self?
+        # print(self) # просто посмотрим, для чего тут self?
         self.alias = new_alias
         
 
@@ -165,7 +165,7 @@ bruce.power = 85
 
 
 # пока нет псевдонима
-print(bruce.alias)
+# print(bruce.alias)
 
 
 # In[23]:
@@ -174,7 +174,6 @@ print(bruce.alias)
 # добавим псевдоним
 bruce.change_alias('Batman')
 print(bruce.alias)
-
 
 # In[24]:
 
@@ -210,7 +209,7 @@ print(bruce.energy)
 
 
 class Character:
-    name = ''
+    name = 'some_name'
     power = 0
     energy = 0
     hands = 2
@@ -331,6 +330,7 @@ print(peter.__dict__)
 
 # плюс мы решим проблемы общих изменяемых атрибутов
 peter.backpack.append('web-shooters')
+bruce.backpack.append('batarang')
 
 
 # In[41]:
