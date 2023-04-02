@@ -29,11 +29,21 @@ class Mentor:
  
 
 class Lecturer(Mentor):
+    def __init__(self, name, surname):
+        super().__init__(name, surname)
+        self.lecturer_grades = {}
 
-    lecturer_grades = {}
+    def _rate_l(self, lecturer_grades):
+        # average = f'self: {self} lecturer_grades: {lecturer_grades}'
 
+        print()
+        print(f'тест функции средней оценки')
+        print(f'селф оценки {(list(self.lecturer_grades.values()))} всего оценок {len(self.lecturer_grades)}')
+        print()
+        # return average
+            
     def __str__(self):
-        res = f'Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за лекции: {self.lecturer_grades}'
+        res = f'Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за лекции: {self._rate_l(self.lecturer_grades)}'
         return res
 
 class Reviewer(Mentor):
@@ -115,36 +125,38 @@ print(f'Оценки другому студенту: {another_student.grades}')
 
 # Создаем объект "Крутой лектор" и назначаем курсы, которые он преподает, выставляем ему оценки
 cool_lecturer = Lecturer('Oleg', 'bulygin')
-cool_lecturer.courses_attached += ['OOP','Python from zero']
+cool_lecturer.courses_attached += ['Python from zero']
+cool_lecturer.courses_attached += ['OOP']
 best_student.rate_hw(cool_lecturer, 'OOP', 10)
 best_student.rate_hw(cool_lecturer, 'GIT', 10) 
 # оценка не добавится, так как курс студентом уже закончен, и лектор его не преподает, сработает проверка первого из этих двух условий
 best_student.rate_hw(cool_lecturer, 'Python from zero', 9)
 best_student.rate_hw(cool_lecturer, 'Python from zero', 10)
 another_student.rate_hw(cool_lecturer, 'OOP', 8)
-another_student.rate_hw(cool_lecturer, 'GIT', 8) 
 another_student.rate_hw(cool_lecturer, 'Python from zero', 8)
 
 print()
 print('Крутой Лектор')
 print(cool_lecturer)
 print(f'Лектор ведет курсы: {cool_lecturer.courses_attached}')
-print(f'Оценки крутому лектору от лучшего студента: {cool_lecturer.lecturer_grades}')
+print(f'Оценки крутому лектору: {cool_lecturer.lecturer_grades}')
+
 print()
 
 # Создаем объект "Другой лектор" и назначаем курсы, которые он преподает, выставляем ему оценки
 another_lecturer = Lecturer('Another', 'Lecturer')
 another_lecturer.courses_attached += ['GIT','Python from zero']
-best_student.rate_hw(another_lecturer, 'Python from zero', 10)
+best_student.rate_hw(another_lecturer, 'Python from zero', 8)
+best_student.rate_hw(another_lecturer, 'Python from zero', 9)
 best_student.rate_hw(another_lecturer, 'GIT', 10) 
 another_student.rate_hw(another_lecturer, 'GIT', 8)
-another_student.rate_hw(another_lecturer, 'Python from zero', 8)
+another_student.rate_hw(another_lecturer, 'OOP', 8)
 
 print()
 print('Другой лектор')
 print(another_lecturer)
 print(f'Лектор ведет курсы: {another_lecturer.courses_attached}')
-print(f'Оценки крутому лектору от лучшего студента: {cool_lecturer.lecturer_grades}')
+print(f'Оценки другому лектору: {another_lecturer.lecturer_grades}')
 print()
 
 # print(f'Словарь лучшего студента с оценками: {best_student.__dict__}')
