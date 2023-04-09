@@ -94,36 +94,36 @@ import sys
 import xml.etree.ElementTree as ET
 
 # открытие файла
-# parser = ET.XMLParser(encoding="utf-8")
-# tree = ET.parse("files/newsafr.xml", parser)
-# print(tree)
+parser = ET.XMLParser(encoding="utf-8")
+tree = ET.parse("files/newsafr.xml", parser)
+print(tree) 
 
 # как получить информацию о теге xml
-# root = tree.getroot()
-# print(root.tag)
-# print(root.attrib)
-# print(root.text)
+root = tree.getroot()
+print(root.tag)
+print(root.attrib)
+print(root.text)
 
 # как перемещаться по дереву (findall или find)
-# news_list = root.findall("channel/item")
-# print(len(news_list))
-# for news in news_list:
-# 	print(news.find("title").text)
-# 	print(news.find("description").text)
+news_list = root.findall("channel/item")
+print(len(news_list))
+for news in news_list:
+	print(news.find("title").text)
+	# print(news.find("description").text)
 
-# titles_list = root.findall("channel/item/title")
-# descr_list = root.findall("channel/item/description")
-# for title in titles_list:
-# 	print(title.text)
+titles_list = root.findall("channel/item/title")
+descr_list = root.findall("channel/item/description")
+for title in titles_list:
+	print(title.text)
 
 # запись xml файла
-# tree.write("files/newsafr2.xml")
+# tree.write("files/newsafr2.xml", encoding="utf-8")
 
 # сравнение прохода по словарю и xml
 # news_list = json_data["rss"]["channel"]["items"]
 # news_list = root.findall("channel/item")
 
-# exit()
+exit()
 
 # =======================
 # работа с json
