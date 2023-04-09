@@ -1,0 +1,3 @@
+Картофель:{'ingredient_name': 'Картофель', 'quantity': 2, 'measure': 'кг'}
+Чеснок:{'ingredient_name': 'Чеснок', 'quantity': 6, 'measure': 'зубч'}
+Сыр гауда:{'ingredient_name': 'Сыр гауда', 'quantity': 200, 'measure': 'г'}
