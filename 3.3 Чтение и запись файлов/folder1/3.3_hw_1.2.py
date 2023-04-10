@@ -20,10 +20,10 @@ with open('recipes.txt', 'rt', encoding='utf-8') as file:
 
     # pprint(cook_book, sort_dicts=False)
 
-print()
-print('Проверяем полученный словарь из файла:')
-print(cook_book)
-print()
+# print()
+# print('Проверяем полученный словарь из файла:')
+# print(cook_book)
+# print()
 
 # сохраним словарь в файл, вдруг пригодится
 
@@ -40,7 +40,8 @@ def get_shop_list_by_dishes(dishes, person_count):
             if d == dd:
                 for q in cook_book[dd]:
                     q['quantity'] *= person_count
-                    dishes_dict[q['ingredient_name']] = q
+                    temp = q.pop('ingredient_name')
+                    dishes_dict[temp] = dict(sorted(q.items()))
     # pprint(dishes_dict, sort_dicts=False)
     return dishes_dict
 
