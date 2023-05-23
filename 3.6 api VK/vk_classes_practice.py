@@ -1,3 +1,10 @@
+	# 51616460
+# https://oauth.vk.com/authorize?client_id=51616460&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=stats,offline&response_type=token&v=5.131
+# scope берем отсюда https://dev.vk.com/reference/access-rights?ref=old_portal
+# токен vk1.a.aORWgzfNkMnHR_94couEt7MRJ9YVgNEMbEBIDl9LtHlkNYWs_EHv8MaoRDIKoscOxho8quRH0ZL5NCZjDVq7qFRz7BRfqoQUJ7or-Hu_yHMPorKkeXIyBceC0hGUV6TA4G5lVd61BrDZrtj6pjPFKmEDdiPf4fk6uAHeyRrAfuPOKCOIL9fDBW77CNvehqj-WZaFgkGjkaojyAlXpi-QgA
+# Защищённый ключ u729JruGzJ1Mu0XSoWVL
+# Сервисный ключ доступа 5e26e4d25e26e4d25e26e4d2265d357e1e55e265e26e4d23a1d179c43e79d1f7366ba56
+
 #!/usr/bin/env python
 # coding: utf-8
 
@@ -29,7 +36,7 @@
 # 
 # 8) В ссылку 
 # 
-# https://oauth.vk.com/authorize?client_id=1&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=stats,offline&response_type=token&v=5.131 вместо 1 вставьте id **вашего** приложения. Не забудьте указать scope: https://vk.com/dev/permissions  
+# https://oauth.vk.com/authorize?client_id=51616460&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=stats,offline&response_type=token&v=5.131 вместо 1 вставьте id **вашего** приложения. Не забудьте указать scope: https://vk.com/dev/permissions  
 # Подробнее про получение токена здесь: https://dev.vk.com/api/access-token/implicit-flow-user  
 # 9) Нажимаете разрешить
 # 

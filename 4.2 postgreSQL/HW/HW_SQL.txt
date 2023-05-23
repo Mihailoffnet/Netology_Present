@@ -1,0 +1,27 @@
+CREATE table if not exists jenre (
+	janre_id SERIAL primary key, 
+	name VARCHAR(50) NOT NULL
+);
+
+CREATE table if not exists singer (
+	singer_id SERIAL primary key, 
+	name VARCHAR(80) NOT NULL
+);
+CREATE table if not exists albums (
+	album_id SERIAL primary key, 
+	name VARCHAR(80) NOT NULL,
+	years INTEGER NOT NULL
+);
+
+CREATE table if not exists tracks (
+	track_id SERIAL primary key,
+	name VARCHAR(80) NOT null,
+	album INTEGER NOT NULL REFERENCES albums(album_id), 
+	duration TIME NOT NULL
+);
+
+CREATE table if not exists collection (
+	collection_id SERIAL primary key, 
+	name VARCHAR(60) NOT NULL,
+	years INTEGER NOT NULL
+);
