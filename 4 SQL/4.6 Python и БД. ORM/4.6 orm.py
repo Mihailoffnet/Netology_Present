@@ -30,8 +30,8 @@ def create_tables(engine):
     # Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
 
-
-DSN = "postgresql://postgres:postgres@localhost:5432/netology_db"
+# DSN = "postgresql://логин:пароль@localhost:5432/имя_базы"
+DSN = "postgresql://postgres:Moff390557@localhost:5432/test"
 engine = sqlalchemy.create_engine(DSN)
 create_tables(engine)
 
