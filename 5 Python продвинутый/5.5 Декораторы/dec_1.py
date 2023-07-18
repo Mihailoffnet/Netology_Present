@@ -6,9 +6,10 @@ def template(param):
 
         def new_function(*args, **kwargs):
             ...  # код до вызова исходной функции
-            print(param)  # можем использовать параметр
-
+            print(f'параметр равен {param}')  # можем использовать параметр
+            print('Декоратор до функции')
             result = old_function(*args, **kwargs)
+            print('Декоратор после функции')
             ...  # код после вызова исходной функции
             return result
 
@@ -19,4 +20,6 @@ def template(param):
 
 @template(param=42)
 def hello_world():
-    return 'Hello World'
+    return print('Hello World')
+
+hello_world()
