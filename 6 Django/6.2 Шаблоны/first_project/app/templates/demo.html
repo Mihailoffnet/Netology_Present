@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul style="color: blue; font-size: 30px">
+    {% for x in data %}
+    {% if x != 5 %}
+    <li>Переменная data = {{ x }}</li>
+    {% endif %}
+    {% endfor %}
+</ul>
+<p style="color: red; font-size: 30px">
+Переменная test = {{ test }} <br>
+
+<p style="color: green; font-size: 30px">
+Переменная val = {{ val }} <br>
+Переменная val метод upper = {{ val.upper }} <br>
+Переменная val метод lower = {{ val.lower }} <br>
+<br>
+
+</p>
+</body>
+</html>
