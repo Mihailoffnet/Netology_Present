@@ -1,0 +1,49 @@
+###
+
+# получить все комментарии по страницам
+GET http://localhost:8000/comments/?page=1
+
+###
+
+# При включенном pagination_class = LimitOffsetPagination в view
+# получить все комментарии по страницам
+GET http://localhost:8000/comments/?limit=1&offset=2
+
+###
+
+# получить все комментарии с фильтрами
+GET http://localhost:8000/comments/?q=коммент&user=1&o=-created_at
+
+
+
+###
+
+# получить конкретный комментарий
+GET http://localhost:8000/comments/2/
+
+###
+
+# запостить коммент
+POST http://localhost:8000/comments/
+Content-Type: application/json
+
+{
+  "user": 1,
+  "text": "олдмин пишет"
+}
+
+###
+
+# обновить коммент
+# метод PUT меняет все поля, PATCH обновляет только указанные
+PATCH http://localhost:8000/comments/1/
+Content-Type: application/json
+
+{
+  "text": "Измененный флу от олдмина"
+}
+
+###
+
+# удалить коммент
+DELETE http://localhost:8000/comments/4/

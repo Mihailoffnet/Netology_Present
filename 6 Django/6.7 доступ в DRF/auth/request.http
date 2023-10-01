@@ -1,0 +1,52 @@
+# посмотреть все объявления
+GET http://127.0.0.1:8000/adv/
+# Authorization: Token 4138d11afc5fba3731339eb67166b7c7c849a557
+
+###
+
+# посмотреть всех пользоватиелей
+GET http://127.0.0.1:8000/user/
+
+###
+# добавить объявление
+POST http://127.0.0.1:8000/adv/
+Content-Type: application/json
+# админ Authorization: Token bfba4565be38af1f212846d23db6392f187dfdec
+Authorization: Token 4138d11afc5fba3731339eb67166b7c7c849a557
+
+{
+    "text": "2-3 объявление от разраба с токеном"
+}
+
+###
+# Удалить объявление
+DELETE http://127.0.0.1:8000/adv/1/
+Authorization: Token 4138d11afc5fba3731339eb67166b7c7c849a557
+
+
+###
+# добавить объявление (с уязвимостью)
+POST http://127.0.0.1:8000/adv/
+Content-Type: application/json
+
+{
+    "user": 1,
+    "text": "Второе объявление от одмена"
+}
+
+# в таком виде есть уязыимость, что любой может создать объявление от чужого имени подставив чужой Id
+
+###
+# изменить объявление
+PATCH http://127.0.0.1:8000/adv/1/
+Content-Type: application/json
+
+{
+    "text": "Первое объявление от одмена"
+}
+
+###
+
+# посмотреть нужное объявление
+GET http://127.0.0.1:8000/adv/1/
+Authorization: Token 4138d11afc5fba3731339eb67166b7c7c849a557
