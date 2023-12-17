@@ -1,0 +1,185 @@
+mihailoff@WIN-5C2IM0KHD2C:~$ ssh mihailoff@151.248.122.14
+mihailoff@151.248.122.14's password:
+Welcome to Ubuntu 22.04.3 LTS (GNU/Linux 5.15.0-87-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Fri Oct 27 07:26:12 PM MSK 2023
+
+  System load:  0.09912109375      Processes:             111
+  Usage of /:   16.1% of 14.68GB   Users logged in:       0
+  Memory usage: 27%                IPv4 address for eth0: 151.248.122.14
+  Swap usage:   0%                 IPv6 address for eth0: 2a00:f940:2:4:2::4ca6
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+Expanded Security Maintenance for Applications is not enabled.
+
+3 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+mihailoff@151-248-122-14:~$ cd
+mihailoff@151-248-122-14:~$ cd~
+-bash: cd~: command not found
+mihailoff@151-248-122-14:~$ ls -al
+total 32
+drwxr-x--- 3 mihailoff mihailoff 4096 Oct 27 19:26 .
+drwxr-xr-x 4 root      root      4096 Oct 27 19:13 ..
+-rw------- 1 mihailoff mihailoff  231 Oct 27 19:23 .bash_history
+-rw-r--r-- 1 mihailoff mihailoff  220 Oct 27 19:13 .bash_logout
+-rw-r--r-- 1 mihailoff mihailoff 3771 Oct 27 19:13 .bashrc
+drwx------ 2 mihailoff mihailoff 4096 Oct 27 19:26 .cache
+-rw------- 1 mihailoff mihailoff   20 Oct 27 19:19 .lesshst
+-rw-r--r-- 1 mihailoff mihailoff  807 Oct 27 19:13 .profile
+-rw-r--r-- 1 mihailoff mihailoff    0 Oct 27 19:15 .sudo_as_admin_successful
+mihailoff@151-248-122-14:~$ cd ~
+mihailoff@151-248-122-14:~$ sudo su postgres
+[sudo] password for mihailoff:
+postgres@151-248-122-14:/home/mihailoff$ cd ~
+postgres@151-248-122-14:~$ ALTER USER postgres WITH PASSWORD 'postgres'
+bash: ALTER: command not found
+postgres@151-248-122-14:~$ ALTER USER postgres WITH PASSWORD 'postgres'
+bash: ALTER: command not found
+postgres@151-248-122-14:~$ sudo su postgres
+[sudo] password for postgres:
+Sorry, try again.
+[sudo] password for postgres:
+Sorry, try again.
+[sudo] password for postgres:
+sudo: 3 incorrect password attempts
+postgres@151-248-122-14:~$ ALTER USER postgres WITH PASSWORD 'postgres'
+bash: ALTER: command not found
+postgres@151-248-122-14:~$ alter -h
+bash: alter: command not found
+postgres@151-248-122-14:~$ ALTER --help
+bash: ALTER: command not found
+postgres@151-248-122-14:~$ ^C
+postgres@151-248-122-14:~$ sudo -u postgres psql -c "ALTER ROLE postgres WITH password 'postgres'
+>
+> "
+postgres is not in the sudoers file.  This incident will be reported.
+postgres@151-248-122-14:~$ su mihailoff
+Password:
+mihailoff@151-248-122-14:/var/lib/postgresql$ cd ~
+mihailoff@151-248-122-14:~$ creatdb -U postgres my_db
+bash: creatdb: command not found
+mihailoff@151-248-122-14:~$ createdb -U postgres my_db
+createdb: error: connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed: FATAL:  Peer authentication failed for user "postgres"
+mihailoff@151-248-122-14:~$ createdb -u postgres my_db
+/usr/lib/postgresql/14/bin/createdb: invalid option -- 'u'
+Try "createdb --help" for more information.
+mihailoff@151-248-122-14:~$ psql -u postgres my_db
+/usr/lib/postgresql/14/bin/psql: invalid option -- 'u'
+Try "psql --help" for more information.
+mihailoff@151-248-122-14:~$ psql -U postgres my_db
+psql: error: connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed: FATAL:  Peer authentication failed for user "postgres"
+mihailoff@151-248-122-14:~$ pip freeze
+attrs==21.2.0
+Automat==20.2.0
+Babel==2.8.0
+bcrypt==3.2.0
+blinker==1.4
+certifi==2020.6.20
+chardet==4.0.0
+click==8.0.3
+cloud-init==23.3.1
+colorama==0.4.4
+command-not-found==0.3
+configobj==5.0.6
+constantly==15.1.0
+cryptography==3.4.8
+dbus-python==1.2.18
+distro==1.7.0
+distro-info==1.1+ubuntu0.1
+fail2ban==0.11.2
+httplib2==0.20.2
+hyperlink==21.0.0
+idna==3.3
+importlib-metadata==4.6.4
+incremental==21.3.0
+jeepney==0.7.1
+Jinja2==3.0.3
+jsonpatch==1.32
+jsonpointer==2.0
+jsonschema==3.2.0
+keyring==23.5.0
+launchpadlib==1.10.16
+lazr.restfulclient==0.14.4
+lazr.uri==1.0.6
+MarkupSafe==2.0.1
+more-itertools==8.10.0
+netifaces==0.11.0
+oauthlib==3.2.0
+pexpect==4.8.0
+ptyprocess==0.7.0
+pyasn1==0.4.8
+pyasn1-modules==0.2.1
+PyGObject==3.42.1
+PyHamcrest==2.0.2
+pyinotify==0.9.6
+PyJWT==2.3.0
+pyOpenSSL==21.0.0
+pyparsing==2.4.7
+pyrsistent==0.18.1
+pyserial==3.5
+python-apt==2.4.0+ubuntu2
+python-debian==0.1.43+ubuntu1.1
+pytz==2022.1
+PyYAML==5.4.1
+requests==2.25.1
+SecretStorage==3.3.1
+service-identity==18.1.0
+six==1.16.0
+sos==4.3
+ssh-import-id==5.11
+systemd-python==234
+Twisted==22.1.0
+ubuntu-advantage-tools==8001
+ubuntu-drivers-common==0.0.0
+ufw==0.36.1
+unattended-upgrades==0.1
+urllib3==1.26.5
+wadllib==1.3.6
+xkit==0.0.0
+zipp==1.0.0
+zope.interface==5.4.0
+mihailoff@151-248-122-14:~$ su postgres
+Password:
+su: Authentication failure
+mihailoff@151-248-122-14:~$ postgres
+bash: postgres: command not found
+mihailoff@151-248-122-14:~$ su postgres
+Password:
+su: Authentication failure
+mihailoff@151-248-122-14:~$ passwd postgres
+passwd: You may not view or modify password information for postgres.
+mihailoff@151-248-122-14:~$ sudo passwd postgres
+[sudo] password for mihailoff:
+New password:
+Retype new password:
+passwd: password updated successfully
+mihailoff@151-248-122-14:~$ su postgres
+Password:
+postgres@151-248-122-14:/home/mihailoff$ createdb -U postgres my_db
+could not change directory to "/home/mihailoff": Permission denied
+postgres@151-248-122-14:/home/mihailoff$ cd ~
+postgres@151-248-122-14:~$ createdb -U postgres my_db
+createdb: error: database creation failed: ERROR:  database "my_db" already exists
+postgres@151-248-122-14:~$

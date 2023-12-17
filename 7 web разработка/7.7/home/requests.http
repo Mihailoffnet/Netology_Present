@@ -1,0 +1,14 @@
+# примеры API-запросов
+
+@baseUrl = http://localhost:5000/
+
+###
+
+# создание продукта (сделано)
+POST {{baseUrl}}/products/
+Content-Type: application/json
+
+{
+  "title": "Арбуз",
+  "description": "Оренбургский, холодок"
+}
